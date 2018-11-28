@@ -14,12 +14,13 @@ if len(sys.argv)==2:
 else:
     quant=3
 
+ACCESS_ID = sys.argv[2]
+ACCESS_KEY = sys.argv[3]
 
 app = Flask(__name__)
 
-ec2 = boto3.client('ec2')
-s = boto3.Session(region_name="us-east-1")
-ec2_service = s.resource('ec2')
+ec2 = boto3.client('ec2', region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
+ec2_service = boto3.resource('ec2',, region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
 
 
 existing_instances = ec2.describe_instances()
@@ -109,13 +110,13 @@ def timeout():
             SecurityGroups=['aps'],
             UserData="""#!/bin/bash
                     cd home/ubuntu/
-                    git clone https://github.com/eduardotp1/aps1_cloud.git
+                    git clone https://github.com/eduardotp1/projeto_cloud.git
                     sudo apt-get -y update
                     sudo apt-get install -y python3-pip
                     sudo pip3 install flask
                     sudo pip3 install flask_restful
-                    cd aps1_cloud/
-                    python3 aps1.py
+                    cd projeto_cloud/
+                    python3 app.py
                     """,
             TagSpecifications=[
                 {

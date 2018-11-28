@@ -2,10 +2,6 @@ import boto3
 from time import sleep
 import sys
 
-if len(sys.argv)==2:
-    quant=sys.argv[1]
-else:
-    quant=3
 
 ec2 = boto3.client('ec2')
 s = boto3.Session(region_name="us-east-1")
@@ -55,30 +51,29 @@ ec2.authorize_security_group_ingress(
     ])
 
 print("Creating Instance")
-for i in range(0,int(quant)):
-    ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCount=1,
-        InstanceType='t2.micro',
-        KeyName='teste',
-        SecurityGroups=['aps'],
-        UserData="""#!/bin/bash
-                cd home/ubuntu/
-                git clone https://github.com/eduardotp1/projeto.git
-                sudo apt-get -y update
-                sudo apt-get install -y python3-pip
-                sudo pip3 install flask
-                sudo pip3 install flask_restful
-                cd aps1_cloud/
-                python3 load_balancer.py
-                """,
-        TagSpecifications=[
-            {
-                'ResourceType': 'instance',
-                'Tags': [
-                    {
-                        'Key': 'Owner',
-                        'Value': 'tirta'
-                    },
-                ]
-            },
-        ],
-        )
+ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCount=1,
+    InstanceType='t2.micro',
+    KeyName='teste',
+    SecurityGroups=['aps'],
+    UserData="""#!/bin/bash
+            cd home/ubuntu/
+            git clone https://github.com/eduardotp1/projeto_cloud.git
+            sudo apt-get -y update
+            sudo apt-get install -y python3-pip
+            sudo pip3 install flask
+            sudo pip3 install flask_restful
+            cd projeto_cloud/
+            python3 load_balancer.py
+            """,
+    TagSpecifications=[
+        {
+            'ResourceType': 'instance',
+            'Tags': [
+                {
+                    'Key': 'Owner',
+                    'Value': 'tirta'
+                },
+            ]
+        },
+    ],
+    )
