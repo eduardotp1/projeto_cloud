@@ -175,7 +175,7 @@ def health():
                         sudo pip3 install flask
                         sudo pip3 install flask_restful
                         cd aps1_cloud/
-                        python3 aps1.py
+                        python3 app.py
                         """,
                 TagSpecifications=[
                     {

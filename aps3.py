@@ -65,6 +65,7 @@ ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCou
             sudo apt-get install -y python3-pip
             sudo pip3 install flask
             sudo pip3 install flask_restful
+            sudo pip3 install boto3
             cd projeto_cloud/
             python3 load_balancer.py {0} {1} {2}
             """.format(info["ACCESS_ID"],info["ACCESS_KEY"],info["quant"]),
