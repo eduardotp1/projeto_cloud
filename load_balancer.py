@@ -9,18 +9,18 @@ import time
 import requests
 import sys
 
-if len(sys.argv)==2:
-    quant=sys.argv[1]
+if len(sys.argv)==4:
+    quant=sys.argv[3]
 else:
     quant=3
 
-ACCESS_ID = sys.argv[2]
-ACCESS_KEY = sys.argv[3]
+ACCESS_ID = sys.argv[1]
+ACCESS_KEY = sys.argv[2]
 
 app = Flask(__name__)
 
 ec2 = boto3.client('ec2', region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
-ec2_service = boto3.resource('ec2',, region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
+ec2_service = boto3.resource('ec2', region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
 
 
 existing_instances = ec2.describe_instances()

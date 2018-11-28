@@ -1,7 +1,10 @@
 import boto3
 from time import sleep
 import sys
+import json
 
+with open('load.json') as f:
+    info = json.load(f)
 
 ec2 = boto3.client('ec2')
 s = boto3.Session(region_name="us-east-1")
@@ -63,8 +66,8 @@ ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCou
             sudo pip3 install flask
             sudo pip3 install flask_restful
             cd projeto_cloud/
-            python3 load_balancer.py
-            """,
+            python3 load_balancer.py {0} {1} {2}
+            """.format(info["ACCESS_ID"],info["ACCESS_KEY"],info["quant"]),
     TagSpecifications=[
         {
             'ResourceType': 'instance',
