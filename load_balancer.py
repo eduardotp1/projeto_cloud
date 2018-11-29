@@ -66,7 +66,6 @@ print("As publics IP que estao rodando sao: ", pub_ip)
 def catch_all(path):
     global pub_ip
     pub_ip = {}
-    print(request.query_string)
     for i in (existing_instances["Reservations"]):
         if ("Tags" in list(i["Instances"][0].keys())):
             for tag in (i["Instances"][0]["Tags"]):
@@ -75,7 +74,7 @@ def catch_all(path):
                     if status == "running":
                         pub_ip[(i["Instances"][0]["InstanceId"])]= i["Instances"][0]["PublicIpAddress"]
     ip = random.choice(list(pub_ip.values()))
-    return redirect("http://" + ip + ":5000/" + path + request.query_string)
+    return redirect("http://" + ip + ":5000/" + path,code=307)
 
 
 

@@ -15,13 +15,12 @@ def front():
         return "Bem vindo ao Multiplicador, coloque apos a URL /Multiplicador/Primeiro numero/Segundo numero, para multiplicar os numeros" 
 
 
-@app.route('/Multiplicador/', methods=['GET'])
-def multiplica():
-        if request.method == 'GET':
-                arg1 = json.loads(request.data)["arg1"]
-                arg2 = json.loads(request.data)["arg2"]
-                resultado=int(arg1)*int(arg2)
-                return jsonify({"resultado":resultado})
+@app.route('/Multiplicador/<arg1>/<arg2>', methods=['GET'])
+def multiplica(arg1,arg2):
+        # arg1 = json.loads(request.data)["arg1"]
+        # arg2 = json.loads(request.data)["arg2"]
+        resultado=int(arg1)*int(arg2)
+        return jsonify({"resultado":resultado})
 
 
 @app.route('/healthcheck', methods=['GET'])
