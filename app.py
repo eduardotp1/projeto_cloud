@@ -17,8 +17,6 @@ def front():
 
 @app.route('/Multiplicador/<arg1>/<arg2>', methods=['GET'])
 def multiplica(arg1,arg2):
-        # arg1 = json.loads(request.data)["arg1"]
-        # arg2 = json.loads(request.data)["arg2"]
         resultado=int(arg1)*int(arg2)
         return jsonify({"resultado":resultado})
 

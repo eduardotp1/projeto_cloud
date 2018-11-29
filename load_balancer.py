@@ -65,14 +65,6 @@ print("As publics IP que estao rodando sao: ", pub_ip)
 @app.route('/<path:path>')
 def catch_all(path):
     global pub_ip
-    pub_ip = {}
-    for i in (existing_instances["Reservations"]):
-        if ("Tags" in list(i["Instances"][0].keys())):
-            for tag in (i["Instances"][0]["Tags"]):
-                if(tag["Value"]=="tirta"):
-                    status = i["Instances"][0]["State"]["Name"]
-                    if status == "running":
-                        pub_ip[(i["Instances"][0]["InstanceId"])]= i["Instances"][0]["PublicIpAddress"]
     ip = random.choice(list(pub_ip.values()))
     return redirect("http://" + ip + ":5000/" + path,code=307)
 

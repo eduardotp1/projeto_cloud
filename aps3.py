@@ -6,9 +6,13 @@ import json
 with open('load.json') as f:
     info = json.load(f)
 
-ec2 = boto3.client('ec2')
-s = boto3.Session(region_name="us-east-1")
-ec2_service = s.resource('ec2')
+
+ACCESS_ID = info["ACCESS_ID"]
+ACCESS_KEY = info["ACCESS_KEY"]
+
+ec2 = boto3.client('ec2', region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
+ec2_service = boto3.resource('ec2',region_name="us-east-1", aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
+
 
 response = ec2.describe_key_pairs()
 chaver = open("teste.pub","r") 
