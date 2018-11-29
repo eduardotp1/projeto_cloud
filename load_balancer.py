@@ -169,11 +169,12 @@ def health():
                 SecurityGroups=['aps'],
                 UserData="""#!/bin/bash
                         cd home/ubuntu/
-                        git clone https://github.com/eduardotp1/aps1_cloud.git
+                        git clone https://github.com/eduardotp1/projeto_cloud.git
                         sudo apt-get -y update
                         sudo apt-get install -y python3-pip
                         sudo pip3 install flask
                         sudo pip3 install flask_restful
+                        sudo pip3 install boto3
                         cd aps1_cloud/
                         python3 app.py
                         """,
