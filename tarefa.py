@@ -15,7 +15,7 @@ for i in range(len(existing_instances["Reservations"])):
                 if status == "running":
                     ip=existing_instances["Reservations"][i]["Instances"][0]["PublicIpAddress"]
 
-
+print(ip)
 
 numeros = json.dumps({"arg1":sys.argv[1],"arg2":sys.argv[2]})
 
