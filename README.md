@@ -14,12 +14,17 @@ Para testar o multiplicador, basta rodar a linha abaixo, com o sendo o primeiro 
 ```
 python3 tarefa.py arg1 arg2
 ```
-Ou pode acessar no browser a URL:
+
+Ou pode acessar no browser pela URL:
 ```
-http://0.0.0.0:5000
+python3 discover.py
+```
+Pegar o valor retornado e colocar no local de ip
+```
+http://ip:5000
 ````
 ```
-http://0.0.0.0:5000/Multiplicador/<arg1>/<arg2>
+http://ip:5000/Multiplicador/<arg1>/<arg2>
 ````
 Substituir arg1 e arg2 pelos numeros que deseja multiplicar
 
