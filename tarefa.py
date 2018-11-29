@@ -20,6 +20,6 @@ for i in range(len(existing_instances["Reservations"])):
 numeros = json.dumps({"arg1":sys.argv[1],"arg2":sys.argv[2]})
 
 headers = {'content-type': 'application/json'}
-req = requests.get('http://'+ip+'/Multiplicador/',data=numeros,headers=headers )
+req = requests.get('http://'+ip+':5000/Multiplicador/',data=numeros,headers=headers )
 
 print (req.text)
