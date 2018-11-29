@@ -62,10 +62,10 @@ ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCou
             cd home/ubuntu/
             git clone https://github.com/eduardotp1/projeto_cloud.git
             sudo apt-get -y update
-            sudo apt-get install -y python3-pip
+            sudo apt-get install -y python3-pipS
+            sudo pip3 install boto3
             sudo pip3 install flask
             sudo pip3 install flask_restful
-            sudo pip3 install boto3
             cd projeto_cloud/
             python3 load_balancer.py {0} {1} {2}
             """.format(info["ACCESS_ID"],info["ACCESS_KEY"],info["quant"]),
@@ -75,7 +75,7 @@ ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCou
             'Tags': [
                 {
                     'Key': 'Owner',
-                    'Value': 'tirta'
+                    'Value': 'tirta1'
                 },
             ]
         },
