@@ -1,6 +1,8 @@
 # Projeto Final de CLoud
-O objetivo do projeto foi implementar um load balancer com uma aplicação stateless. 
-Para rodar o projeto basta rodar o script abaixo:
+O objetivo do projeto foi implementar um load balancer com uma aplicação stateless.
+
+### Como inicializar
+Para rodar o projeto basta rodar o script abaixo, localizada dentro da pasta apos fazer o git clone deste repositorio:
 ```
 ./init.sh
 ```
@@ -11,4 +13,18 @@ Minha aplicação é um multiplicador, porém, com mais algumas modificações p
 Para testar o multiplicador, basta rodar a linha abaixo, com o sendo o primeiro e segundo argumento os numeros a serem multiplicados.
 ```
 python3 tarefa.py arg1 arg2
+```
+Ou pode acessar no browser a URL:
+```
+http://0.0.0.0:5000
+````
+```
+http://0.0.0.0:5000/Multiplicador/<arg1>/<arg2>
+````
+Substituir arg1 e arg2 pelos numeros que deseja multiplicar
+
+### Limpando instancias AWS
+Rode o script abaixo:
+```
+python3 clean.py
 ```
