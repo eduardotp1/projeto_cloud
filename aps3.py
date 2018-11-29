@@ -75,7 +75,7 @@ ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCou
             'Tags': [
                 {
                     'Key': 'Owner',
-                    'Value': 'tirta'
+                    'Value': 'tirta1'
                 },
             ]
         },
