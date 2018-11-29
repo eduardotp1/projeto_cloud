@@ -22,7 +22,34 @@ app = Flask(__name__)
 ec2 = boto3.client('ec2', region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
 ec2_service = boto3.resource('ec2', region_name='us-east-1', aws_access_key_id=ACCESS_ID, aws_secret_access_key= ACCESS_KEY)
 
-
+ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCount=1,
+            InstanceType='t2.micro',
+            KeyName='teste',
+            SecurityGroups=['aps'],
+            UserData="""#!/bin/bash
+                    cd home/ubuntu/
+                    git clone https://github.com/eduardotp1/projeto_cloud.git
+                    sudo apt-get -y update
+                    sudo apt-get install -y python3-pip
+                    sudo pip3 install flask
+                    sudo pip3 install flask_restful
+                    sudo pip3 install boto3
+                    cd projeto_cloud/
+                    python3 app.py
+                    """,
+            TagSpecifications=[
+                {
+                    'ResourceType': 'instance',
+                    'Tags': [
+                        {
+                            'Key': 'Owner',
+                            'Value': 'tirta'
+                        },
+                    ]
+                },
+            ],
+            )
+time.sleep(120)
 existing_instances = ec2.describe_instances()
 pub_ip={}
 for i in (existing_instances["Reservations"]):
