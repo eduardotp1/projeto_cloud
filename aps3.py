@@ -62,7 +62,7 @@ ec2_service.create_instances(ImageId='ami-0ac019f4fcb7cb7e6', MinCount=1, MaxCou
             cd home/ubuntu/
             git clone https://github.com/eduardotp1/projeto_cloud.git
             sudo apt-get -y update
-            sudo apt-get install -y python3-pipS
+            sudo apt-get install -y python3-pip
             sudo pip3 install boto3
             sudo pip3 install flask
             sudo pip3 install flask_restful
