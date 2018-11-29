@@ -11,7 +11,9 @@ for i in range(len(existing_instances["Reservations"])):
     if ("Tags" in list(existing_instances["Reservations"][i]["Instances"][0].keys())):
         for tag in (existing_instances["Reservations"][i]["Instances"][0]["Tags"]):
             if(tag["Value"]=="tirta1"):
-                ip=existing_instances["Reservations"][i]["Instances"][0]["PublicIpAddress"]
+                status = (existing_instances["Reservations"][i]["Instances"][0]["State"]["Name"])
+                if status == "running":
+                    ip=existing_instances["Reservations"][i]["Instances"][0]["PublicIpAddress"]
 
 
 
